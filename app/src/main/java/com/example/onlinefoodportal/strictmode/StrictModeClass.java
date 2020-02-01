@@ -2,7 +2,7 @@ package com.example.onlinefoodportal.strictmode;
 
 public class StrictModeClass {
 
-    public static void StictMode(){
+    public static void StrictMode(){
         android.os.StrictMode.ThreadPolicy policy =
                 new android.os.StrictMode.ThreadPolicy.Builder()
                         .permitAll().build();
