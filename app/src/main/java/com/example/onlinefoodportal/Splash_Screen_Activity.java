@@ -36,7 +36,7 @@ public class Splash_Screen_Activity extends AppCompatActivity {
             Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
         }
         else {
-            Intent intent = new Intent(Splash_Screen_Activity.this,MainActivity.class);
+            Intent intent = new Intent(Splash_Screen_Activity.this,IntroActivity.class);
             startActivity(intent);
             finish();
         }
