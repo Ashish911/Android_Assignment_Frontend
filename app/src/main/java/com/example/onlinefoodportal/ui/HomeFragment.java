@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.ui;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,11 @@ import android.widget.ImageView;
 
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.adapter.CategoryAdapter;
+import com.example.onlinefoodportal.adapter.SliderAdapter;
 import com.example.onlinefoodportal.model.Category;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +29,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
+    SliderView sliderView;
     RecyclerView recyclerView;
     ImageView categoryImg;
 
@@ -39,6 +45,18 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView=view.findViewById(R.id.categoryRecyclerView);
         categoryImg=view.findViewById(R.id.imgCategory);
+        sliderView = view.findViewById(R.id.Slider);
+
+        final SliderAdapter adapter = new SliderAdapter(getContext());
+        adapter.setCount(3);
+        sliderView.setSliderAdapter(adapter);
+
+        sliderView.setIndicatorAnimation(IndicatorAnimations.SLIDE); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.CUBEINROTATIONTRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.startAutoCycle();
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

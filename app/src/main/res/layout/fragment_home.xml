@@ -28,10 +28,10 @@
                 app:cardCornerRadius="6dp"
                 android:layout_margin="16dp">
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/ViewPager"
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/Slider"
                     android:layout_width="match_parent"
-                    android:layout_height="135dp"/>
+                    android:layout_height="150dp"/>
             </androidx.cardview.widget.CardView>
 
             <TextView
