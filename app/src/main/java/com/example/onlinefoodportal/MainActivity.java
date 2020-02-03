@@ -49,7 +49,13 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate();
+                if (TextUtils.isEmpty(etEmail.getText())) {
+                    etEmail.setError("Enter Email-Address");
+                    return;
+                } else if (TextUtils.isEmpty(etPassword.getText())) {
+                    etPassword.setError("Enter Password");
+                    return;
+                }
 
                 String Email = String.valueOf(etEmail.getText());
                 String Password = String.valueOf(etPassword.getText());
@@ -69,15 +75,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void validate(){
-        if (TextUtils.isEmpty(etEmail.getText())) {
-            etEmail.setError("Enter Email-Address");
-            return;
-        } else if (TextUtils.isEmpty(etPassword.getText())) {
-            etPassword.setError("Enter Password");
-            return;
-        }
-    }
 
 //    private void SaveEmailPassword(){
 //        SharedPreferences sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);

@@ -62,7 +62,25 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Validate();
+                if (TextUtils.isEmpty(etFirstName.getText())) {
+                    etFirstName.setError("Enter FirstName");
+                    return;
+                } else if (TextUtils.isEmpty(etLastName.getText())) {
+                    etLastName.setError("Enter LastName");
+                    return;
+                } else if (TextUtils.isEmpty(etEmail.getText())) {
+                    etEmail.setError("Enter Email-Address");
+                    return;
+                } else if (TextUtils.isEmpty(etPhoneNo.getText())) {
+                    etPhoneNo.setError("Enter PhoneNo");
+                    return;
+                } else if (TextUtils.isEmpty(etPassword.getText())) {
+                    etPassword.setError("Enter Password");
+                    return;
+                } else if (isChecked == false) {
+                    chkterms.setError("Mandatory Field");
+                    return;
+                }
 
                 String FirstName = etFirstName.getText().toString();
                 String LastName = etLastName.getText().toString();
@@ -83,7 +101,8 @@ public class SignUpActivity extends AppCompatActivity {
                             return;
                         }
                         Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SignUpActivity.this,DashboardActivity.class);
+                        Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -94,27 +113,5 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void Validate(){
-        if (TextUtils.isEmpty(etFirstName.getText())) {
-            etFirstName.setError("Enter FirstName");
-            return;
-        } else if (TextUtils.isEmpty(etLastName.getText())) {
-            etLastName.setError("Enter LastName");
-            return;
-        } else if (TextUtils.isEmpty(etEmail.getText())) {
-            etEmail.setError("Enter Email-Address");
-            return;
-        } else if (TextUtils.isEmpty(etPhoneNo.getText())) {
-            etPhoneNo.setError("Enter PhoneNo");
-            return;
-        } else if (TextUtils.isEmpty(etPassword.getText())) {
-            etPassword.setError("Enter Password");
-            return;
-        } else if (isChecked == false) {
-            chkterms.setError("Mandatory Field");
-            return;
-        }
     }
 }

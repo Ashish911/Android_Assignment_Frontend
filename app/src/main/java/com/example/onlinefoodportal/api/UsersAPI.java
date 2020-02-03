@@ -11,10 +11,10 @@ import retrofit2.http.POST;
 
 public interface UsersAPI {
 
-    @POST("users/signup")
+    @POST("user/signup")
     Call<SignUpResponse> registerUser(@Body Users users);
 
     @FormUrlEncoded
-    @POST("users/login")
+    @POST("user/login")
     Call<SignUpResponse> checkUser(@Field("Email") String Email, @Field("Password") String Password);
 }
