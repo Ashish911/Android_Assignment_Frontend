@@ -21,7 +21,7 @@ import com.example.onlinefoodportal.strictmode.StrictModeClass;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    EditText etEmail, etPassword;
+    EditText etUserName, etPassword;
     ImageButton btnLogin;
     Button btnSignUp;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbarLF);
 
-        etEmail = findViewById(R.id.emailLF);
+        etUserName = findViewById(R.id.UserNameLF);
         etPassword = findViewById(R.id.passwordLF);
         btnLogin = findViewById(R.id.signinLF);
         btnSignUp = findViewById(R.id.signupLF);
@@ -49,27 +49,27 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(etEmail.getText())) {
-                    etEmail.setError("Enter Email-Address");
+                if (TextUtils.isEmpty(etUserName.getText())) {
+                    etUserName.setError("Enter UserName");
                     return;
                 } else if (TextUtils.isEmpty(etPassword.getText())) {
                     etPassword.setError("Enter Password");
                     return;
                 }
 
-                String Email = String.valueOf(etEmail.getText());
+                String UserName = String.valueOf(etUserName.getText());
                 String Password = String.valueOf(etPassword.getText());
 
                 LoginBll loginBll = new LoginBll();
 
                 StrictModeClass.StrictMode();
-                if (loginBll.checkUser(Email, Password)) {
+                if (loginBll.checkUser(UserName, Password)) {
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
-                    etEmail.requestFocus();
+                    etUserName.requestFocus();
                 }
             }
         });

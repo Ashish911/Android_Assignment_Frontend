@@ -2,34 +2,34 @@ package com.example.onlinefoodportal.model;
 
 public class Users {
 
-    private String FirstName;
-    private String LastName;
+    private String FullName;
+    private String UserName;
     private String Email;
     private String PhoneNo;
     private String Password;
 
-    public Users(String firstName, String lastName, String email, String phoneNo, String password) {
-        FirstName = firstName;
-        LastName = lastName;
+    public Users(String fullName, String userName, String email, String phoneNo, String password) {
+        FullName = fullName;
+        UserName = userName;
         Email = email;
         PhoneNo = phoneNo;
         Password = password;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return FullName;
     }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public void setFirstName(String fullName) {
+        FullName = fullName;
     }
 
     public String getLastName() {
-        return LastName;
+        return UserName;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public void setLastName(String userName) {
+        UserName = userName;
     }
 
     public String getEmail() {
