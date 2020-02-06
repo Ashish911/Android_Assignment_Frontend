@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText etFirstName, etLastName, etEmail, etPhoneNo, etPassword;
+    EditText etFullName, etUserName, etEmail, etPhoneNo, etPassword;
     ImageButton btnSignUp;
     Button btnLogin;
     CheckBox chkterms;
@@ -35,8 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        etFirstName = findViewById(R.id.FirstNameSF);
-        etLastName = findViewById(R.id.LastNameSF);
+        etFullName = findViewById(R.id.FullNameSF);
+        etUserName = findViewById(R.id.UserNameSF);
         etEmail = findViewById(R.id.emailSF);
         etPhoneNo = findViewById(R.id.PhoneNoSF);
         etPassword = findViewById(R.id.passwordSF);
@@ -62,11 +62,11 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(etFirstName.getText())) {
-                    etFirstName.setError("Enter FirstName");
+                if (TextUtils.isEmpty(etFullName.getText())) {
+                    etFullName.setError("Enter FullName");
                     return;
-                } else if (TextUtils.isEmpty(etLastName.getText())) {
-                    etLastName.setError("Enter LastName");
+                } else if (TextUtils.isEmpty(etUserName.getText())) {
+                    etUserName.setError("Enter UserName");
                     return;
                 } else if (TextUtils.isEmpty(etEmail.getText())) {
                     etEmail.setError("Enter Email-Address");
@@ -82,13 +82,13 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                String FirstName = etFirstName.getText().toString();
-                String LastName = etLastName.getText().toString();
+                String FullName = etFullName.getText().toString();
+                String UserName = etUserName.getText().toString();
                 String Email = etEmail.getText().toString();
                 String PhoneNo = etPhoneNo.getText().toString();
                 String Password = etPassword.getText().toString();
 
-                Users users = new Users(FirstName, LastName, Email, PhoneNo, Password);
+                Users users = new Users(FullName, UserName, Email, PhoneNo, Password);
 
                 UsersAPI usersAPI = Url.getInstance().create(UsersAPI.class);
                 Call<SignUpResponse> signUpCall = usersAPI.registerUser(users);
