@@ -2,12 +2,22 @@ package com.example.onlinefoodportal.serverresponse;
 
 public class SignUpResponse {
 
+    private String id;
     private String status;
     private String token;
 
-    public SignUpResponse(String status, String token) {
+    public SignUpResponse(String id, String status, String token) {
+        this.id = id;
         this.status = status;
         this.token = token;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getStatus() {

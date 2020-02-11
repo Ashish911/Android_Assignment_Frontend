@@ -21,7 +21,7 @@ import com.example.onlinefoodportal.strictmode.StrictModeClass;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    EditText etUserName, etPassword;
+    EditText etEmail, etPassword;
     ImageButton btnLogin;
     Button btnSignUp;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbarLF);
 
-        etUserName = findViewById(R.id.UserNameLF);
+        etEmail = findViewById(R.id.emailLF);
         etPassword = findViewById(R.id.passwordLF);
         btnLogin = findViewById(R.id.signinLF);
         btnSignUp = findViewById(R.id.signupLF);
@@ -49,27 +49,27 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(etUserName.getText())) {
-                    etUserName.setError("Enter UserName");
+                if (TextUtils.isEmpty(etEmail.getText())) {
+                    etEmail.setError("Enter Email");
                     return;
                 } else if (TextUtils.isEmpty(etPassword.getText())) {
                     etPassword.setError("Enter Password");
                     return;
                 }
 
-                String UserName = String.valueOf(etUserName.getText());
+                String Email = String.valueOf(etEmail.getText());
                 String Password = String.valueOf(etPassword.getText());
 
                 LoginBll loginBll = new LoginBll();
 
                 StrictModeClass.StrictMode();
-                if (loginBll.checkUser(UserName, Password)) {
+                if (loginBll.checkUser(Email, Password)) {
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
-                    etUserName.requestFocus();
+                    etEmail.requestFocus();
                 }
             }
         });
