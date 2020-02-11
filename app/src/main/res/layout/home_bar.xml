@@ -26,8 +26,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FoodStation"
+                android:textColor="@color/Red"
+                android:fontFamily="@font/euphoria_script"
                 android:textAllCaps="true"
-                android:textSize="20dp"/>
+                android:textSize="25dp"/>
 
             <ImageButton
                 android:layout_width="wrap_content"
