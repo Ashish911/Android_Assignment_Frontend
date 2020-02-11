@@ -3,6 +3,8 @@ package com.example.onlinefoodportal;
 import android.os.AsyncTask;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +37,27 @@ public class GetNearbyPlacesData extends AsyncTask<Object,String,String> {
 
         try {
             JSONObject parentObject = new JSONObject(s);
-            JSONArray jsonArray = parentObject.getJSONArray("results");
+            JSONArray resultArray = parentObject.getJSONArray("results");
+
+            for (int i = 0; i < resultArray.length(); i++){
+                JSONObject jsonObject = resultArray.getJSONObject(i);
+                JSONObject locationObj = jsonObject.getJSONObject("geometry").getJSONObject("location");
+
+                String latitude = locationObj.getString("lat");
+                String longitude = locationObj.getString("lng");
+
+                JSONObject nameObject = resultArray.getJSONObject(i);
+
+                String name = nameObject.getString("name");
+
+                LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.title(name);
+                markerOptions.position(latLng);
+
+                googleMap.addMarker(markerOptions);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
