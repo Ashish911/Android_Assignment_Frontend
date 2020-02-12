@@ -2,27 +2,27 @@ package com.example.onlinefoodportal.model;
 
 public class Category {
 
-    private int categoryImg;
-    private String categoryName;
+    private String CategoryName;
+    private String CategoryImage;
 
-    public Category(int categoryImg, String categoryName) {
-        this.categoryImg = categoryImg;
-        this.categoryName = categoryName;
-    }
-
-    public int getCategoryImg() {
-        return categoryImg;
-    }
-
-    public void setCategoryImg(int categoryImg) {
-        this.categoryImg = categoryImg;
+    public Category(String categoryName, String categoryImage) {
+        CategoryName = categoryName;
+        CategoryImage = categoryImage;
     }
 
     public String getCategoryName() {
-        return categoryName;
+        return CategoryName;
     }
 
     public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+        CategoryName = categoryName;
+    }
+
+    public String getCategoryImage() {
+        return CategoryImage;
+    }
+
+    public void setCategoryImage(String categoryImage) {
+        CategoryImage = categoryImage;
     }
 }

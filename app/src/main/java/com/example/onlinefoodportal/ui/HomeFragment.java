@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,17 +13,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.adapter.CategoryAdapter;
 import com.example.onlinefoodportal.adapter.SliderAdapter;
+import com.example.onlinefoodportal.api.CategoryAPI;
 import com.example.onlinefoodportal.model.Category;
+import com.example.onlinefoodportal.url.Url;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,21 +66,37 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
         sliderView.startAutoCycle();
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
 
-        List<Category> categoryList=new ArrayList<>();
-        categoryList.add(new Category(R.drawable.restaurant,"Restaurants"));
-        categoryList.add(new Category(R.drawable.liquor,"Liquors"));
-        categoryList.add(new Category(R.drawable.bakeries,"Bakeries"));
-        categoryList.add(new Category(R.drawable.icecream, "Refreshments"));
-        categoryList.add(new Category(R.drawable.organic,"Organic"));
 
-        final CategoryAdapter categoryAdapter=new CategoryAdapter(getContext(),categoryList);
-        recyclerView.setAdapter(categoryAdapter);
+        getCategory();
 
         return view;
+    }
+
+    private void getCategory(){
+        CategoryAPI categoryAPI= Url.getInstance().create(CategoryAPI.class);
+        Call<List<Category>> listCall= categoryAPI.getCategory();
+        listCall.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Toast " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                CategoryAdapter categoryAdapter = new CategoryAdapter(getActivity(),response.body());
+                recyclerView.setAdapter(categoryAdapter);
+                recyclerView.setHasFixedSize(true);
+                LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                recyclerView.setLayoutManager(layoutManager);
+                categoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

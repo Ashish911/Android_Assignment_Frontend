@@ -12,16 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Category;
+import com.example.onlinefoodportal.url.Url;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.categoryAdapterViewHolder>{
 
-    private Context mcontext;
-    private List<Category> categories;
+    Context context;
+    List<Category> categories;
 
-    public CategoryAdapter(Context mcontext, List<Category> categories) {
-        this.mcontext = mcontext;
+    public CategoryAdapter(Context context, List<Category> categories) {
+        this.context = context;
         this.categories = categories;
     }
 
@@ -36,10 +38,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.catego
     public void onBindViewHolder(@NonNull categoryAdapterViewHolder holder, int position) {
 
         final Category category=categories.get(position);
-        holder.categoryImg.setImageResource(category.getCategoryImg());
+        Picasso.get().load(Url.base_url_image + categories.get(position).getCategoryImage()).into(holder.categoryImg);
         holder.categoryName.setText(category.getCategoryName());
-
-
     }
 
     @Override
@@ -49,21 +49,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.catego
 
     public class categoryAdapterViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView categoryImg;
-        private TextView categoryName;
+        ImageView categoryImg;
+        TextView categoryName;
         public categoryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.categoryImg=itemView.findViewById(R.id.imgCategory);
-            this.categoryName=itemView.findViewById(R.id.tvCName);
-        }
-
-        private void setCategoryImg(){
-
-        }
-
-        private void setCategory(String name){
-            categoryName.setText(name);
-
+            categoryImg=itemView.findViewById(R.id.imgCategory);
+            categoryName=itemView.findViewById(R.id.tvCName);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.onlinefoodportal;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.example.onlinefoodportal.api.UsersAPI;
 import com.example.onlinefoodportal.model.Users;
@@ -23,6 +26,7 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private NotificationManagerCompat notificationManagerCompat;
     EditText etFullName, etUserName, etEmail, etPhoneNo, etPassword;
     ImageButton btnSignUp;
     Button btnLogin;
@@ -34,6 +38,10 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
 
         etFullName = findViewById(R.id.FullNameSF);
         etUserName = findViewById(R.id.UserNameSF);
@@ -101,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
                             return;
                         }
                         Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                        DisplayNotification();
                         Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
                         startActivity(intent);
                     }
@@ -113,5 +122,18 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void DisplayNotification() {
+
+        Notification notification = new NotificationCompat.Builder(this,CreateChannel.CHANNEL_1)
+
+                .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                .setContentTitle("Registration complete! ")
+                .setContentText("Congratulation you have successfully registered")
+                .setCategory(NotificationCompat.CATEGORY_CALL)
+                .build();
+
+        notificationManagerCompat.notify(1, notification);
     }
 }
