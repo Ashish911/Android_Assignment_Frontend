@@ -99,6 +99,7 @@
         android:layout_marginTop="10dp">
 
         <Button
+            android:id="@+id/Logout"
             android:padding="10dp"
             android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
             android:background="@drawable/background"

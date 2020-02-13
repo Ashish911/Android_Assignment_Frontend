@@ -17,44 +17,44 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.categoryAdapterViewHolder>{
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemViewHolder>{
 
-    Context context;
-    List<Category> categories;
+    private List<Category> categoryList;
+    private Context context;
 
-    public CategoryAdapter(Context context, List<Category> categories) {
+    public CategoryAdapter(List<Category> categoryList, Context context) {
+        this.categoryList = categoryList;
         this.context = context;
-        this.categories = categories;
     }
 
     @NonNull
     @Override
-    public categoryAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.display_category,null);
-        return new categoryAdapterViewHolder(inflate);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.display_category,null);
+        return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull categoryAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+        final Category category = categoryList.get(position);
+        Picasso.get().load(Url.base_url_image + categoryList.get(position).getCategoryImage()).into(holder.imgcategory);
+        holder.tvCName.setText(category.getCategoryName());
 
-        final Category category=categories.get(position);
-        Picasso.get().load(Url.base_url_image + categories.get(position).getCategoryImage()).into(holder.categoryImg);
-        holder.categoryName.setText(category.getCategoryName());
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return categoryList.size();
     }
 
-    public class categoryAdapterViewHolder extends RecyclerView.ViewHolder{
-
-        ImageView categoryImg;
-        TextView categoryName;
-        public categoryAdapterViewHolder(@NonNull View itemView) {
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
+        private ImageView imgcategory;
+        private TextView tvCName;
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryImg=itemView.findViewById(R.id.imgCategory);
-            categoryName=itemView.findViewById(R.id.tvCName);
+            imgcategory = itemView.findViewById(R.id.imgCategory);
+            tvCName = itemView.findViewById(R.id.tvCName);
         }
     }
+
 }

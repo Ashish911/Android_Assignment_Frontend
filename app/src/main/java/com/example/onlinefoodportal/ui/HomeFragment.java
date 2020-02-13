@@ -25,7 +25,6 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -58,7 +57,6 @@ public class HomeFragment extends Fragment {
         final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(3);
         sliderView.setSliderAdapter(adapter);
-
         sliderView.setIndicatorAnimation(IndicatorAnimations.SLIDE); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.CUBEINROTATIONTRANSFORMATION);
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
@@ -74,27 +72,25 @@ public class HomeFragment extends Fragment {
     }
 
     private void getCategory(){
-        CategoryAPI categoryAPI= Url.getInstance().create(CategoryAPI.class);
-        Call<List<Category>> listCall= categoryAPI.getCategory();
+        CategoryAPI categoryAPI = Url.getInstance().create(CategoryAPI.class);
+        Call<List<Category>> listCall = categoryAPI.getCategory();
         listCall.enqueue(new Callback<List<Category>>() {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(getContext(), "Toast " + response.code(), Toast.LENGTH_SHORT).show();
-                    return;
+                if (!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Toast" + response.code(), Toast.LENGTH_SHORT).show();
                 }
-                CategoryAdapter categoryAdapter = new CategoryAdapter(getActivity(),response.body());
+                CategoryAdapter categoryAdapter = new CategoryAdapter(response.body(), getActivity());
                 recyclerView.setAdapter(categoryAdapter);
-                recyclerView.setHasFixedSize(true);
-                LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-                recyclerView.setLayoutManager(layoutManager);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                linearLayoutManager.setOrientation(linearLayoutManager.HORIZONTAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
                 categoryAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
