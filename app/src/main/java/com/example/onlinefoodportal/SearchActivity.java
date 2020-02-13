@@ -7,21 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class FoodSectionActivity extends AppCompatActivity {
+import com.example.onlinefoodportal.ui.HomeFragment;
+
+public class SearchActivity extends AppCompatActivity {
 
     ImageButton Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_section);
+        setContentView(R.layout.activity_search);
 
-        Back = findViewById(R.id.backF);
+        Back = findViewById(R.id.backS);
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FoodSectionActivity.this, CategoryActivity.class);
+                Intent intent = new Intent(SearchActivity.this, HomeFragment.class);
+                startActivity(intent);
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.ui;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -12,10 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.onlinefoodportal.MainActivity;
 import com.example.onlinefoodportal.R;
+import com.example.onlinefoodportal.SearchActivity;
+import com.example.onlinefoodportal.SignUpActivity;
 import com.example.onlinefoodportal.adapter.CategoryAdapter;
 import com.example.onlinefoodportal.adapter.SliderAdapter;
 import com.example.onlinefoodportal.api.CategoryAPI;
@@ -39,6 +44,7 @@ public class HomeFragment extends Fragment {
     SliderView sliderView;
     RecyclerView recyclerView;
     ImageView categoryImg;
+    ImageButton Search;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -53,6 +59,7 @@ public class HomeFragment extends Fragment {
         recyclerView=view.findViewById(R.id.categoryRecyclerView);
         categoryImg=view.findViewById(R.id.imgCategory);
         sliderView = view.findViewById(R.id.Slider);
+        Search = view.findViewById(R.id.searchrestaurant);
 
         final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(3);
@@ -64,7 +71,13 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
         sliderView.startAutoCycle();
 
-
+        Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         getCategory();
 
