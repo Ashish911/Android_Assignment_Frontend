@@ -1,5 +1,8 @@
 package com.example.onlinefoodportal;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,7 +16,16 @@ import com.example.onlinefoodportal.ui.HomeFragment;
 import com.example.onlinefoodportal.ui.LocationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class DashboardActivity extends AppCompatActivity {
+
+    private SensorManager mSensorManager;
+    private float mAccel;
+    private float mAccelCurrent;
+    private float mAccelLast;
+    private Sensor mProximity, mAcclerometer, gyroscopeSensor;
+    private static final int SENSOR_SENSITIVITY = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +36,18 @@ public class DashboardActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAcclerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        gyroscopeSensor =
+                mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+//        Objects.requireNonNull(mSensorManager).registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ALL),
+//                SensorManager.SENSOR_DELAY_NORMAL);
+        mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        mAccel = 10f;
+        mAccelCurrent = SensorManager.GRAVITY_EARTH;
+        mAccelLast = SensorManager.GRAVITY_EARTH;
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,4 +74,6 @@ public class DashboardActivity extends AppCompatActivity {
             return true;
         }
     };
+
+
 }
