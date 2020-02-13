@@ -4,12 +4,14 @@ public class Food {
 
     private String FoodName;
     private String FoodImage;
-    private Integer Price;
+    private int Price;
+    private String Restaurantid;
 
-    public Food(String foodName, String foodImage, Integer price) {
+    public Food(String foodName, String foodImage, int price, String restaurantid) {
         FoodName = foodName;
         FoodImage = foodImage;
         Price = price;
+        Restaurantid = restaurantid;
     }
 
     public String getFoodName() {
@@ -28,11 +30,19 @@ public class Food {
         FoodImage = foodImage;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         Price = price;
+    }
+
+    public String getRestaurantid() {
+        return Restaurantid;
+    }
+
+    public void setRestaurantid(String restaurantid) {
+        Restaurantid = restaurantid;
     }
 }

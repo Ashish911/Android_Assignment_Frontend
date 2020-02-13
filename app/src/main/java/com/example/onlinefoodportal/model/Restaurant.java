@@ -2,12 +2,16 @@ package com.example.onlinefoodportal.model;
 
 public class Restaurant {
 
-    private String RestaurantName;
+    private String RestaurantName, _id;
     private String Logo;
     private String Tags;
     private String Location;
     private String Delivery;
     private String Categoryid;
+
+    public Restaurant(String _id){
+        this._id = _id;
+    }
 
     public Restaurant(String restaurantName, String logo, String tags, String location, String delivery, String categoryid) {
         RestaurantName = restaurantName;
@@ -16,6 +20,14 @@ public class Restaurant {
         Location = location;
         Delivery = delivery;
         Categoryid = categoryid;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getRestaurantName() {
