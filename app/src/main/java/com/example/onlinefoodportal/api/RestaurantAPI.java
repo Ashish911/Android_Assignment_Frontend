@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface RestaurantAPI {
 
@@ -14,5 +15,8 @@ public interface RestaurantAPI {
 
     @GET("restaurant/:id")
     Call<List<Restaurant>> getRestaurantById();
+
+    @GET("restaurant/getByCategory/{id}")
+    Call<List<Restaurant>> getRestaurantByID(@Path("id") String Categoryid);
 
 }

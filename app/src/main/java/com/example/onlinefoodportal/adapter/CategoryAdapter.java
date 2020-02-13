@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlinefoodportal.CategoryActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Category;
 import com.example.onlinefoodportal.url.Url;
@@ -39,6 +41,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemVi
         final Category category = categoryList.get(position);
         Picasso.get().load(Url.base_url_image + categoryList.get(position).getCategoryImage()).into(holder.imgcategory);
         holder.tvCName.setText(category.getCategoryName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CategoryActivity.class);
+                intent.putExtra("categoryid",category.get_id());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

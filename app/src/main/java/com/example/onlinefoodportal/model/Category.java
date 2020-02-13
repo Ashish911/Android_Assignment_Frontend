@@ -3,7 +3,11 @@ package com.example.onlinefoodportal.model;
 public class Category {
 
     private String CategoryName;
-    private String CategoryImage;
+    private String CategoryImage, _id;
+
+    public Category(String _id){
+        this._id = _id;
+    }
 
     public Category(String categoryName, String categoryImage) {
         CategoryName = categoryName;
@@ -24,5 +28,13 @@ public class Category {
 
     public void setCategoryImage(String categoryImage) {
         CategoryImage = categoryImage;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

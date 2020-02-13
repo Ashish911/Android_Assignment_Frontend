@@ -2,26 +2,28 @@ package com.example.onlinefoodportal.model;
 
 public class Restaurant {
 
-    private String Name;
+    private String RestaurantName;
     private String Logo;
     private String Tags;
     private String Location;
     private String Delivery;
+    private String Categoryid;
 
-    public Restaurant(String name, String logo, String tags, String location, String delivery) {
-        Name = name;
+    public Restaurant(String restaurantName, String logo, String tags, String location, String delivery, String categoryid) {
+        RestaurantName = restaurantName;
         Logo = logo;
         Tags = tags;
         Location = location;
         Delivery = delivery;
+        Categoryid = categoryid;
     }
 
-    public String getName() {
-        return Name;
+    public String getRestaurantName() {
+        return RestaurantName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setRestaurantName(String restaurantName) {
+        RestaurantName = restaurantName;
     }
 
     public String getLogo() {
@@ -54,5 +56,13 @@ public class Restaurant {
 
     public void setDelivery(String delivery) {
         Delivery = delivery;
+    }
+
+    public String getCategoryid() {
+        return Categoryid;
+    }
+
+    public void setCategoryid(String categoryid) {
+        Categoryid = categoryid;
     }
 }
