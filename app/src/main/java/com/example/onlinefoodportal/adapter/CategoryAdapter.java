@@ -12,58 +12,49 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Category;
+import com.example.onlinefoodportal.url.Url;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.categoryAdapterViewHolder>{
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ItemViewHolder>{
 
-    private Context mcontext;
-    private List<Category> categories;
+    private List<Category> categoryList;
+    private Context context;
 
-    public CategoryAdapter(Context mcontext, List<Category> categories) {
-        this.mcontext = mcontext;
-        this.categories = categories;
+    public CategoryAdapter(List<Category> categoryList, Context context) {
+        this.categoryList = categoryList;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public categoryAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.display_category,null);
-        return new categoryAdapterViewHolder(inflate);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.display_category,null);
+        return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull categoryAdapterViewHolder holder, int position) {
-
-        final Category category=categories.get(position);
-        holder.categoryImg.setImageResource(category.getCategoryImg());
-        holder.categoryName.setText(category.getCategoryName());
-
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+        final Category category = categoryList.get(position);
+        Picasso.get().load(Url.base_url_image + categoryList.get(position).getCategoryImage()).into(holder.imgcategory);
+        holder.tvCName.setText(category.getCategoryName());
 
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return categoryList.size();
     }
 
-    public class categoryAdapterViewHolder extends RecyclerView.ViewHolder{
-
-        private ImageView categoryImg;
-        private TextView categoryName;
-        public categoryAdapterViewHolder(@NonNull View itemView) {
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
+        private ImageView imgcategory;
+        private TextView tvCName;
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.categoryImg=itemView.findViewById(R.id.imgCategory);
-            this.categoryName=itemView.findViewById(R.id.tvCName);
-        }
-
-        private void setCategoryImg(){
-
-        }
-
-        private void setCategory(String name){
-            categoryName.setText(name);
-
+            imgcategory = itemView.findViewById(R.id.imgCategory);
+            tvCName = itemView.findViewById(R.id.tvCName);
         }
     }
+
 }

@@ -12,4 +12,6 @@ public interface FoodAPI {
     @GET("food/")
     Call<List<Food>> getFood();
 
+//    @GET("food/search/{food")
+
 }

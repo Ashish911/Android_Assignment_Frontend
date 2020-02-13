@@ -24,7 +24,6 @@ public class LoginBll {
                     loginResponse.body().getStatus().equals("Login success!")) {
 
                 Url.token += loginResponse.body().getToken();
-                // Url.Cookie = imageResponseResponse.headers().get("Set-Cookie");
                 isSuccess = true;
             }
         } catch (

@@ -1,64 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/accbackground"
+    android:orientation="vertical"
     tools:context=".ui.AccountFragment">
 
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="145dp"
-        android:layout_height="128dp"
-        android:src="@drawable/ic_perm_identity_black_24dp"
-        android:background="@color/White"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="20sp"
+        android:background="@drawable/background"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="404dp"
-        android:layout_height="553dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfile">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/almendra_sc"
+            android:text="Your Information"
+            android:textColor="@color/Black"
+            android:textSize="24dp"></TextView>
 
-        <Button
-            android:padding="10dp"
-            android:layout_marginTop="30dp"
-            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
-            android:background="@drawable/background"
-            android:text="Profile"
-            android:textAlignment="textStart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="22dp"
+        android:background="#E0DCDC">
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:src="@drawable/ic_perm_identity_black_24dp"></ImageView>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@+id/profile"
+            android:fontFamily="@font/almendra_sc"
+            android:text="Ashish Dongol"
+            android:textColor="@color/Black"
+            android:textSize="22dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/profile"
+            android:fontFamily="@font/almendra_sc"
+            android:text="9846513215"
+            android:textColor="@color/Black"
+            android:textSize="16dp"></TextView>
+
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/ic_arrow_forward_black_24dp"></ImageView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp">
 
         <Button
             android:padding="10dp"
             android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+            android:drawableLeft="@drawable/ic_settings_black_24dp"
             android:background="@drawable/background"
-            android:text="ChangePassword"
+            android:text="About Us"
             android:textAlignment="textStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
         <Button
+            android:id="@+id/Logout"
             android:padding="10dp"
-            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
             android:background="@drawable/background"
             android:text="Logout"
             android:textAlignment="textStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+</LinearLayout>
