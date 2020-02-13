@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.onlinefoodportal">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -19,8 +20,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".CartActivity"></activity>
-        <activity android:name=".EditProfileActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,13 +32,17 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".EditProfileActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".ui.NearbyLoactionActivity"
-            android:label="@string/title_activity_nearby_loaction" />
         <activity android:name=".FoodSectionActivity" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".IntroActivity" />
@@ -50,9 +54,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".Splash_Screen_Activity">
-
-        </activity>
+        <activity android:name=".Splash_Screen_Activity" />
         <activity android:name=".MainActivity" />
     </application>
 

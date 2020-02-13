@@ -13,10 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.example.onlinefoodportal.ui.AccountFragment;
 import com.example.onlinefoodportal.ui.FavouritesFragment;
 import com.example.onlinefoodportal.ui.HomeFragment;
-import com.example.onlinefoodportal.ui.LocationFragment;
+import com.example.onlinefoodportal.ui.CartFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -62,8 +60,8 @@ public class DashboardActivity extends AppCompatActivity {
                 case R.id.nav_favourites:
                     selectedFragment = new FavouritesFragment();
                     break;
-                case R.id.nav_nearbyLocation:
-                    selectedFragment = new LocationFragment();
+                case R.id.nav_Cart:
+                    selectedFragment = new CartFragment();
                     break;
                 case R.id.nav_Account:
                     selectedFragment = new AccountFragment();

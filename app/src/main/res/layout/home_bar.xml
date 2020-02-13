@@ -32,18 +32,13 @@
                 android:textSize="25dp"/>
 
             <ImageButton
+                android:id="@+id/searchrestaurant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="180dp"
                 android:background="#ffffff"
                 android:src="@drawable/searchbar"/>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:background="#ffffff"
-                app:srcCompat="@drawable/cart" />
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
