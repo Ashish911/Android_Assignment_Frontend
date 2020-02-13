@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlinefoodportal.FoodSectionActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Restaurant;
 import com.example.onlinefoodportal.url.Url;
@@ -43,6 +45,14 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.It
         holder.Location.setText(restaurant.getLocation());
         holder.Tags.setText(restaurant.getTags());
         holder.Delivery.setText(restaurant.getDelivery());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, FoodSectionActivity.class);
+                intent.putExtra("restaurantid", restaurant.get_id());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
