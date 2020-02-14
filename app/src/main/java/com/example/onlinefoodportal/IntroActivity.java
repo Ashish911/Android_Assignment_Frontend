@@ -50,9 +50,9 @@ public class IntroActivity extends AppCompatActivity {
 
         //filling view pager with image, title and description.
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.burger));
-        mList.add(new ScreenItem("Fast Delivery","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.delivery));
-        mList.add(new ScreenItem("Easy Payment","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.payment));
+        mList.add(new ScreenItem("Fresh Food","You can easily find fresh foods and dishes created by many different restaurants.",R.drawable.burger));
+        mList.add(new ScreenItem("Fast Delivery","Delivery is very easy as it will get delivered to your house within a few hours of your order.",R.drawable.delivery));
+        mList.add(new ScreenItem("Easy Payment","Payment is very easy as you can easily pay through card, online wallet and many more services.",R.drawable.payment));
 
         screenPager = findViewById(R.id.intro_viewpager);
         introViewPagerAdapter = new IntroViewPagerAdapter(this,mList);

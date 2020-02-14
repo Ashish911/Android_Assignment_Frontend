@@ -16,9 +16,9 @@ import android.widget.Toast;
 
 import com.example.onlinefoodportal.EditProfileActivity;
 import com.example.onlinefoodportal.MainActivity;
+import com.example.onlinefoodportal.MapsActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.api.UsersAPI;
-import com.example.onlinefoodportal.bll.LogoutBll;
 import com.example.onlinefoodportal.model.Users;
 import com.example.onlinefoodportal.strictmode.StrictModeClass;
 import com.example.onlinefoodportal.url.Url;
@@ -32,7 +32,7 @@ import retrofit2.Response;
  */
 public class AccountFragment extends Fragment {
 
-    private Button btnLogOut;
+    private Button btnLogOut, btnAboutUs, btnMap;
     TextView Username, PhoneNo;
     RelativeLayout relativeLayout, relativeLayoutprofile;
 
@@ -53,6 +53,8 @@ public class AccountFragment extends Fragment {
         Username = view.findViewById(R.id.username);
         PhoneNo = view.findViewById(R.id.PhoneNoP);
         btnLogOut = view.findViewById(R.id.Logout);
+        btnMap = view.findViewById(R.id.Maps);
+        btnAboutUs = view.findViewById(R.id.AboutUs);
 
         relativeLayoutprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,22 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+
+        btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -95,19 +113,7 @@ public class AccountFragment extends Fragment {
     }
 
     public void logout(){
-        String token= Url.token;
 
-        LogoutBll logoutBLL = new LogoutBll();
-        StrictModeClass.StrictMode();
-        if (logoutBLL.logout(token)){
-            getActivity().finish();
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-            Toast.makeText(getActivity(), "Logout succecsful", Toast.LENGTH_SHORT).show();
-
-        }else {
-            Toast.makeText(getContext(), "Logout process failed! Please try again", Toast.LENGTH_SHORT).show();
-        }
     }
 
 }
