@@ -22,9 +22,13 @@ import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.SearchActivity;
 import com.example.onlinefoodportal.SignUpActivity;
 import com.example.onlinefoodportal.adapter.CategoryAdapter;
+import com.example.onlinefoodportal.adapter.FoodAdapter;
+import com.example.onlinefoodportal.adapter.HomeFoodAdapter;
 import com.example.onlinefoodportal.adapter.SliderAdapter;
 import com.example.onlinefoodportal.api.CategoryAPI;
+import com.example.onlinefoodportal.api.FoodAPI;
 import com.example.onlinefoodportal.model.Category;
+import com.example.onlinefoodportal.model.Food;
 import com.example.onlinefoodportal.url.Url;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -42,7 +46,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     SliderView sliderView;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView,foodrecyclerview;
     ImageView categoryImg;
     ImageButton Search;
 
@@ -60,6 +64,7 @@ public class HomeFragment extends Fragment {
         categoryImg=view.findViewById(R.id.imgCategory);
         sliderView = view.findViewById(R.id.Slider);
         Search = view.findViewById(R.id.searchrestaurant);
+        foodrecyclerview = view.findViewById(R.id.FoodsRecycleView);
 
         final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(3);
@@ -80,7 +85,7 @@ public class HomeFragment extends Fragment {
         });
 
         getCategory();
-
+        getFoods();
         return view;
     }
 
@@ -104,6 +109,31 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
                 Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getFoods(){
+        FoodAPI foodAPI = Url.getInstance().create(FoodAPI.class);
+        Call<List<Food>> listCall = foodAPI.getFood();
+        listCall.enqueue(new Callback<List<Food>>() {
+            @Override
+            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Toast" + response.code(), Toast.LENGTH_SHORT).show();
+                }
+
+                HomeFoodAdapter homeFoodAdapter = new HomeFoodAdapter(response.body(),getActivity());
+                foodrecyclerview.setAdapter(homeFoodAdapter);
+                foodrecyclerview.setHasFixedSize(true);
+                foodrecyclerview.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                homeFoodAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Food>> call, Throwable t) {
+
             }
         });
     }

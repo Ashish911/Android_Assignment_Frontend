@@ -27,6 +27,4 @@ public interface UsersAPI {
     @PUT("user/me")
     Call<Users> UpdateDetails(@Header("Authorization")String token,@Body Users users);
 
-    @POST("users/logout")
-    Call<Void> logOut(@Header("Authorization") String token);
 }

@@ -79,33 +79,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <ImageButton
-                android:id="@+id/favourite_unclicked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/White"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
-                app:layout_constraintStart_toEndOf="@+id/RestaurantName"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.191"
-                tools:srcCompat="@drawable/star_unclicked" />
-
-            <ImageButton
-                android:id="@+id/favourite_clicked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/White"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.796"
-                app:layout_constraintStart_toEndOf="@+id/RestaurantName"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.191"
-                tools:srcCompat="@drawable/star_clicked" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
