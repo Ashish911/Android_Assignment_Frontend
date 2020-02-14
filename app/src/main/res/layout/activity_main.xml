@@ -63,6 +63,7 @@
                     android:textSize="14sp"
                     android:textColorHint="#606060"
                     android:inputType="text"
+                    android:layout_marginTop="40dp"
                     app:met_floatingLabel="highlight"/>
 
                 <com.rengwuxian.materialedittext.MaterialEditText
@@ -80,13 +81,7 @@
                     android:inputType="textPassword"
                     app:met_floatingLabel="highlight"/>
 
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="REMEMBER ME"
-                    android:id="@+id/checkboxLF"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="30dp" />
+
 
                 <ImageButton
                     android:layout_width="50dp"

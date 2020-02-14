@@ -9,11 +9,12 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.onlinefoodportal.ui.AccountFragment;
 import com.example.onlinefoodportal.ui.FavouritesFragment;
 import com.example.onlinefoodportal.ui.HomeFragment;
-import com.example.onlinefoodportal.ui.CartFragment;
+import com.example.onlinefoodportal.ui.OrderHistoryFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -31,6 +32,17 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle!=null) {
+            String name = bundle.getString("name");
+            if (name.equals("home")) {
+                bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+                openFragment(new HomeFragment());
+            }
+        }
+
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
@@ -60,8 +72,8 @@ public class DashboardActivity extends AppCompatActivity {
                 case R.id.nav_favourites:
                     selectedFragment = new FavouritesFragment();
                     break;
-                case R.id.nav_Cart:
-                    selectedFragment = new CartFragment();
+                case R.id.nav_History:
+                    selectedFragment = new OrderHistoryFragment();
                     break;
                 case R.id.nav_Account:
                     selectedFragment = new AccountFragment();
@@ -72,6 +84,13 @@ public class DashboardActivity extends AppCompatActivity {
             return true;
         }
     };
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.commit();
+    }
+
 
 
 }

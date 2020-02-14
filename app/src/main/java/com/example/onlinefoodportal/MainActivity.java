@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if (loginBll.checkUser(Email, Password)) {
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     startActivity(intent);
+                    SaveUsernamePassword();
                     finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
@@ -76,14 +77,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    private void SaveEmailPassword(){
-//        SharedPreferences sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//
-//        editor.putString("email", etPassword.getText().toString().trim());
-//        editor.putString("password",etPassword.getText().toString().trim());
-//        editor.commit();
-//
-//        Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-//    }
+    private void SaveUsernamePassword(){
+        SharedPreferences sharedPreferences=getSharedPreferences("User",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+        editor.putString("email",etEmail.getText().toString().trim());
+        editor.putString("password",etPassword.getText().toString().trim());
+        editor.commit();
+    }
 }

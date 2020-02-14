@@ -16,10 +16,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartFragment extends Fragment implements OnMapReadyCallback {
+public class OrderHistoryFragment extends Fragment implements OnMapReadyCallback {
 
 
-    public CartFragment() {
+    public OrderHistoryFragment() {
         // Required empty public constructor
     }
 
@@ -28,7 +28,7 @@ public class CartFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_orderhistory, container, false);
     }
 
     @Override

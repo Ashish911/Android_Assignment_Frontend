@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    EditText etFullNameUpdate,etUserNameupdate,etEmailUpdate,etPhoneNoUpdate,etPasswordUpdate;
+    EditText etFullNameUpdate,etUserNameupdate,etEmailUpdate,etPhoneNoUpdate;
     Button btnUpdate;
     TextView tvid;
     ImageButton back;
@@ -36,7 +36,6 @@ public class EditProfileActivity extends AppCompatActivity {
         etFullNameUpdate = findViewById(R.id.etUpdateFullName);
         etUserNameupdate = findViewById(R.id.etUpdateUserName);
         etEmailUpdate = findViewById(R.id.etUpdateemail);
-        etPasswordUpdate = findViewById(R.id.etUpdatepassword);
         etPhoneNoUpdate = findViewById(R.id.etUpdatePhone);
         tvid = findViewById(R.id.tvId);
 
@@ -50,7 +49,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     etFullNameUpdate.setText(response.body().getFullName());
                     etUserNameupdate.setText(response.body().getUserName());
                     etEmailUpdate.setText(response.body().getEmail());
-                    etPasswordUpdate.setText(response.body().getPassword());
+//                    etPasswordUpdate.setText(response.body().getPassword());
                     etPhoneNoUpdate.setText(response.body().getPhoneNo());
                     return;
                 }
@@ -71,9 +70,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 String FullName = etFullNameUpdate.getText().toString();
                 String UserName = etUserNameupdate.getText().toString();
                 String Email = etEmailUpdate.getText().toString();
-                String Password = etPasswordUpdate.getText().toString();
                 String PhoneNo = etPhoneNoUpdate.getText().toString();
-                Users users = new Users(FullName,UserName,Email,Password,PhoneNo);
+                Users users = new Users(FullName,UserName,Email,PhoneNo);
                 UsersAPI usersAPI1 = Url.getInstance().create(UsersAPI.class);
                 final Call<Users> usersCall1 = usersAPI1.UpdateDetails(Url.token, users);
 
