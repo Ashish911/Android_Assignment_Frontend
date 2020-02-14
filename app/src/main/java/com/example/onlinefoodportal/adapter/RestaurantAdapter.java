@@ -66,8 +66,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.It
         private TextView Location;
         private TextView Tags;
         private TextView Delivery;
-        private ImageButton btnunclicked;
-        private ImageButton btnclicked;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,8 +74,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.It
             Location = itemView.findViewById(R.id.RestaurantLocation);
             Tags = itemView.findViewById(R.id.ResTag);
             Delivery = itemView.findViewById(R.id.ResDelivery);
-            btnunclicked = itemView.findViewById(R.id.favourite_unclicked);
-            btnclicked = itemView.findViewById(R.id.favourite_clicked);
         }
     }
 }

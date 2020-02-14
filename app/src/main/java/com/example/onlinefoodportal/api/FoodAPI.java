@@ -14,7 +14,7 @@ public interface FoodAPI {
     Call<List<Food>> getFood();
 
      @GET("food/:id")
-    Call<List<Food>> getRestaurantById();
+    Call<List<Food>> getbyId();
 
     @GET("food/search/{foodName}")
     Call<List<Food>> searchFood(@Path("foodName") String FoodName);
