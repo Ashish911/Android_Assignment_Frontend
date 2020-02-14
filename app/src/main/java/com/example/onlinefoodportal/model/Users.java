@@ -16,19 +16,19 @@ public class Users {
         Password = password;
     }
 
-    public String getFirstName() {
+    public String getFullName() {
         return FullName;
     }
 
-    public void setFirstName(String fullName) {
+    public void setFullName(String fullName) {
         FullName = fullName;
     }
 
-    public String getLastName() {
+    public String getUserName() {
         return UserName;
     }
 
-    public void setLastName(String userName) {
+    public void setUserName(String userName) {
         UserName = userName;
     }
 
