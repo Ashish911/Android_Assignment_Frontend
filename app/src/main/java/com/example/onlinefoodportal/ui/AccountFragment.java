@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.onlinefoodportal.EditProfileActivity;
 import com.example.onlinefoodportal.MainActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.api.UsersAPI;
@@ -52,6 +53,14 @@ public class AccountFragment extends Fragment {
         Username = view.findViewById(R.id.username);
         PhoneNo = view.findViewById(R.id.PhoneNoP);
         btnLogOut = view.findViewById(R.id.Logout);
+
+        relativeLayoutprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override

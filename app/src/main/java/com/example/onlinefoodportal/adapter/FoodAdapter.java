@@ -39,7 +39,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemViewHolder
         final Food food = foodList.get(position);
         Picasso.get().load(Url.base_url_image + foodList.get(position).getFoodImage()).into(holder.Image);
         holder.Name.setText(food.getFoodName());
-//        holder.Price.setText(food.getPrice());
+        holder.Price.setText("Rs " + food.getPrice());
     }
 
     @Override
