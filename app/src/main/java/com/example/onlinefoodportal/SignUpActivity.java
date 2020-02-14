@@ -16,6 +16,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.onlinefoodportal.api.UsersAPI;
+import com.example.onlinefoodportal.channel.CreateChannel;
 import com.example.onlinefoodportal.model.Users;
 import com.example.onlinefoodportal.serverresponse.SignUpResponse;
 import com.example.onlinefoodportal.url.Url;
@@ -27,10 +28,12 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
 
     private NotificationManagerCompat notificationManagerCompat;
+
     EditText etFullName, etUserName, etEmail, etPhoneNo, etPassword;
     ImageButton btnSignUp;
     Button btnLogin;
     CheckBox chkterms;
+    int id=1;
 
     boolean isChecked = false;
 
@@ -109,7 +112,6 @@ public class SignUpActivity extends AppCompatActivity {
                             return;
                         }
                         Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                        DisplayNotification();
                         Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
                         startActivity(intent);
                     }
@@ -119,19 +121,19 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+                DisplayNotification();
             }
         });
 
     }
 
-    private void DisplayNotification() {
+    public void DisplayNotification() {
 
         Notification notification = new NotificationCompat.Builder(this,CreateChannel.CHANNEL_1)
-
                 .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
-                .setContentTitle("Registration complete! ")
-                .setContentText("Congratulation you have successfully registered")
-                .setCategory(NotificationCompat.CATEGORY_CALL)
+                .setContentTitle("Registered")
+                .setContentText("Registered Successfully")
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
 
         notificationManagerCompat.notify(1, notification);
