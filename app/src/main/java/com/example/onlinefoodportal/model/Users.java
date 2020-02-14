@@ -8,6 +8,13 @@ public class Users {
     private String PhoneNo;
     private String Password;
 
+    public Users(String fullName, String userName, String email, String phoneNo){
+        FullName = fullName;
+        UserName = userName;
+        Email = email;
+        PhoneNo = phoneNo;
+    }
+
     public Users(String fullName, String userName, String email, String phoneNo, String password) {
         FullName = fullName;
         UserName = userName;

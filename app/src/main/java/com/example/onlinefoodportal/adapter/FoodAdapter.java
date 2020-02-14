@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlinefoodportal.FoodDisplayActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Food;
 import com.example.onlinefoodportal.url.Url;
@@ -35,11 +37,22 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         final Food food = foodList.get(position);
         Picasso.get().load(Url.base_url_image + foodList.get(position).getFoodImage()).into(holder.Image);
         holder.Name.setText(food.getFoodName());
         holder.Price.setText("Rs " + food.getPrice());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, FoodDisplayActivity.class);
+                intent.putExtra("id", foodList.get(position).get_id());
+                intent.putExtra("Name", foodList.get(position).getFoodName());
+                intent.putExtra("Price", foodList.get(position).getPrice());
+                intent.putExtra("Image", foodList.get(position).getFoodImage());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

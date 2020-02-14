@@ -12,9 +12,9 @@
         android:title="Favourites">
     </item>
     <item
-        android:id="@+id/nav_Cart"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
-        android:title="Cart">
+        android:id="@+id/nav_History"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="History">
     </item>
     <item
         android:id="@+id/nav_Account"
