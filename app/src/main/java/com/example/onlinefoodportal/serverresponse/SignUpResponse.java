@@ -1,23 +1,26 @@
 package com.example.onlinefoodportal.serverresponse;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SignUpResponse {
 
-    private String id;
+    @SerializedName("userid")
+    @Expose
+    private String userid;
+    @SerializedName("status")
+    @Expose
     private String status;
+    @SerializedName("token")
+    @Expose
     private String token;
 
-    public SignUpResponse(String id, String status, String token) {
-        this.id = id;
-        this.status = status;
-        this.token = token;
+    public String getUserid() {
+        return userid;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getStatus() {

@@ -59,7 +59,7 @@ public class FoodDisplayActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String Name = intent.getExtras().getString("Name");
-        final int Price = intent.getExtras().getInt("Price");
+        final String Price = intent.getExtras().getString("Price");
         final String img = intent.getExtras().getString("Image");
         final String FoodId = intent.getExtras().getString("id");
 

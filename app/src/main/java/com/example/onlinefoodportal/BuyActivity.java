@@ -24,8 +24,7 @@ public class BuyActivity extends AppCompatActivity {
     TextView tvFoodName, tvPrice;
     EditText etAddress, etPhoneNo;
     Button btnOrder, btnCancel;
-    String Address, FoodName, PhoneNo;
-    int Price;
+    String Address, FoodName, PhoneNo,Price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class BuyActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         Intent intent = getIntent();
         FoodName = intent.getExtras().getString("name");
-        Price = intent.getExtras().getInt("price");
+        Price = intent.getExtras().getString("price");
 
         tvFoodName.setText(FoodName);
         tvPrice.setText("Rs " + Price);

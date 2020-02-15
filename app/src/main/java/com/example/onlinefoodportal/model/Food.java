@@ -5,14 +5,14 @@ public class Food {
     private String _id;
     private String FoodName;
     private String FoodImage;
-    private int Price;
+    private String Price;
     private String Restaurantid;
 
     public Food(String _id) {
         this._id = _id;
     }
 
-    public Food(String foodName, String foodImage, int price, String restaurantid) {
+    public Food(String foodName, String foodImage, String price, String restaurantid) {
         FoodName = foodName;
         FoodImage = foodImage;
         Price = price;
@@ -43,11 +43,11 @@ public class Food {
         FoodImage = foodImage;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return Price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         Price = price;
     }
 
