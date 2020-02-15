@@ -22,7 +22,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".BuyActivity"></activity>
+        <activity android:name=".AboutUsActivity" />
         <activity android:name=".FoodDisplayActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

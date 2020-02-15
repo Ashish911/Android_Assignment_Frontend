@@ -4,20 +4,34 @@ package com.example.onlinefoodportal.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.onlinefoodportal.R;
+import com.example.onlinefoodportal.adapter.OrderAdapter;
+import com.example.onlinefoodportal.api.OrderAPI;
+import com.example.onlinefoodportal.model.Order;
+import com.example.onlinefoodportal.url.Url;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrderHistoryFragment extends Fragment implements OnMapReadyCallback {
+public class OrderHistoryFragment extends Fragment {
 
+    RecyclerView recyclerView;
 
     public OrderHistoryFragment() {
         // Required empty public constructor
@@ -28,11 +42,29 @@ public class OrderHistoryFragment extends Fragment implements OnMapReadyCallback
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orderhistory, container, false);
+        View view = inflater.inflate(R.layout.fragment_orderhistory, container, false);
+        recyclerView = view.findViewById(R.id.OrderRecylceView);
+        OrderAPI orderAPI = Url.getInstance().create(OrderAPI.class);
+        Call<List<Order>> listCall = orderAPI.getOrder(Url.token);
+        listCall.enqueue(new Callback<List<Order>>() {
+            @Override
+            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                if(response.code()==200){
+                    Toast.makeText(getActivity(), "Toast" + response.code(), Toast.LENGTH_SHORT).show();
+                }
+                OrderAdapter orderAdapter = new OrderAdapter(getActivity(),response.body());
+                recyclerView.setAdapter(orderAdapter);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                orderAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Order>> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error" +t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-    }
 }
