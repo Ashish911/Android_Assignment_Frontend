@@ -22,7 +22,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".FoodDisplayActivity"></activity>
+        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".FoodDisplayActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -48,7 +49,7 @@
         <activity android:name=".FoodSectionActivity" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".IntroActivity" />
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".Splash_Screen_Activity" />
         <activity android:name=".MainActivity">

@@ -1,7 +1,9 @@
 package com.example.onlinefoodportal.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.onlinefoodportal.AboutUsActivity;
 import com.example.onlinefoodportal.EditProfileActivity;
 import com.example.onlinefoodportal.MainActivity;
 import com.example.onlinefoodportal.MapsActivity;
@@ -67,14 +70,18 @@ public class AccountFragment extends Fragment {
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
+                SharedPreferences preferences = getContext().getSharedPreferences("User", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear().apply();
+                Intent intent=new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
         btnAboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                Intent intent = new Intent(getActivity(), AboutUsActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,10 +117,6 @@ public class AccountFragment extends Fragment {
         });
 
         return view;
-    }
-
-    public void logout(){
-
     }
 
 }
