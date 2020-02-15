@@ -78,28 +78,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Description"
-                android:layout_marginTop="120dp"
-                android:orientation="vertical">
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
 
-                <TextView
+                <ImageButton
+                    android:id="@+id/favourites"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
                     android:text="Add to favourite"
+                    android:background="@color/White"
+                    android:layout_marginLeft="20dp"
                     android:textColor="#fe783d"
                     android:textSize="16dp"
+                    android:src="@drawable/star_unclicked"/>
 
-                    />
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buybtn"
                     android:layout_width="150dp"
+                    android:layout_marginLeft="80dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="15dp"
-                    android:text="Continue"
+                    android:text="Buy"
                     android:textColor="@color/White"
                     android:fontFamily="@font/almendra_sc"
                     android:background="@drawable/btn_background"/>
