@@ -20,10 +20,9 @@ public class LoginBll {
 
         try {
             Response<SignUpResponse> loginResponse = usersCall.execute();
-            if (loginResponse.isSuccessful() &&
-                    loginResponse.body().getStatus().equals("Login success!")) {
-
+            if (loginResponse.isSuccessful()){
                 Url.token += loginResponse.body().getToken();
+                Url.userid=loginResponse.body().getUserid();
                 isSuccess = true;
             }
         } catch (

@@ -14,16 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.onlinefoodportal.FoodDisplayActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.model.Favourite;
-import com.example.onlinefoodportal.model.Food;
 import com.example.onlinefoodportal.url.Url;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.MyViewHolder> {
+public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.ItemViewHolder> {
 
     private Context context;
     private List<Favourite> favouriteList;
+
 
     public FavouriteAdapter(Context context, List<Favourite> favouriteList) {
         this.context = context;
@@ -32,15 +32,16 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.MyVi
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_favourites,parent,false);
-        return new MyViewHolder(view);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_favourites, null);
+        return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
+
         final Favourite favourite = favouriteList.get(position);
-        Picasso.get().load(Url.base_url_image + favouriteList.get(position).getFood().getFoodImage()).into(holder.imgfood);
+        Picasso.get().load(Url.base_url_image + favouriteList.get(position).getFood().getFoodImage()).into(holder.imgFood);
         holder.tvId.setText(favourite.getFood().get_id());
         holder.tvName.setText(favourite.getFood().getFoodName());
         holder.tvPrice.setText(favourite.getFood().getPrice());
@@ -55,22 +56,21 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.MyVi
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return favouriteList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imgfood;
-        TextView tvName, tvPrice, tvId;
+        private ImageView imgFood;
+        private TextView tvName, tvPrice, tvId;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgfood = itemView.findViewById(R.id.FPic);
+            imgFood = itemView.findViewById(R.id.FPic);
             tvName = itemView.findViewById(R.id.FName);
             tvPrice = itemView.findViewById(R.id.FPrice);
             tvId = itemView.findViewById(R.id.FID);

@@ -3,11 +3,11 @@ package com.example.onlinefoodportal.model;
 public class Order {
 
     private String foodname;
-    private int Price;
+    private String Price;
     private String location;
     private String PhoneNo;
 
-    public Order(String foodname, int price, String location, String phoneNo) {
+    public Order(String foodname, String price, String location, String phoneNo) {
         this.foodname = foodname;
         Price = price;
         this.location = location;
@@ -22,11 +22,11 @@ public class Order {
         this.foodname = foodname;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return Price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         Price = price;
     }
 

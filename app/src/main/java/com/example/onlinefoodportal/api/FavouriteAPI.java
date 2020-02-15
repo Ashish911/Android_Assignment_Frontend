@@ -14,9 +14,9 @@ import retrofit2.http.POST;
 public interface FavouriteAPI {
 
     @FormUrlEncoded
-    @POST("favorite")
+    @POST("favourite")
     Call<Void> addUser(@Header("Authorization") String token, @Field("foodid") String foodid);
 
-    @GET("favorite")
+    @GET("favourite")
     Call<List<Favourite>> getFavorite(@Header("Authorization") String token);
 }
