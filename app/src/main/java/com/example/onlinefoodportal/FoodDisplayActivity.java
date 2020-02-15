@@ -89,6 +89,16 @@ public class FoodDisplayActivity extends AppCompatActivity {
                 favourite.setVisibility(View.INVISIBLE);
             }
         });
+
+        buybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(FoodDisplayActivity.this, BuyActivity.class);
+                intent1.putExtra("name", Name);
+                intent1.putExtra("price", Price);
+                startActivity(intent1);
+            }
+        });
     }
 
     @Override
