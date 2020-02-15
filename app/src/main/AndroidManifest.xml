@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.onlinefoodportal">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -22,7 +25,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".BuyActivity"></activity>
+        <activity android:name=".BuyActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".FoodDisplayActivity" />
         <!--
@@ -52,16 +55,14 @@
         <activity android:name=".IntroActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".Splash_Screen_Activity" >
+        <activity android:name=".Splash_Screen_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
