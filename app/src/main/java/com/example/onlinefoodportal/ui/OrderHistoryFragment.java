@@ -1,6 +1,7 @@
 package com.example.onlinefoodportal.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onlinefoodportal.R;
+import com.example.onlinefoodportal.SearchActivity;
 import com.example.onlinefoodportal.adapter.OrderAdapter;
 import com.example.onlinefoodportal.api.OrderAPI;
 import com.example.onlinefoodportal.model.Order;
@@ -31,6 +34,7 @@ import retrofit2.Response;
  */
 public class OrderHistoryFragment extends Fragment {
 
+    ImageView Search;
     RecyclerView recyclerView;
 
     public OrderHistoryFragment() {
@@ -44,6 +48,17 @@ public class OrderHistoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_orderhistory, container, false);
         recyclerView = view.findViewById(R.id.OrderRecylceView);
+
+        Search = view.findViewById(R.id.searchfood);
+
+        Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         OrderAPI orderAPI = Url.getInstance().create(OrderAPI.class);
         Call<List<Order>> listCall = orderAPI.getOrder(Url.token);
         listCall.enqueue(new Callback<List<Order>>() {

@@ -19,26 +19,10 @@ public class Splash_Screen_Activity extends AppCompatActivity {
         handler.postAtTime(new Runnable() {
                 @Override
                 public void run() {
-//        checkemail();
+                    Intent intent = new Intent(Splash_Screen_Activity.this,IntroActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }, 2000);
     }
-
-//    private void checkemail(){
-//        SharedPreferences sharedPreferences =getSharedPreferences("User",MODE_PRIVATE);
-//        String email = sharedPreferences.getString("email", "");
-//        String password = sharedPreferences.getString("email", "");
-//
-//        if (email.equals("Admin@admin.com")|| password.equals("Admin")){
-//            Intent intent = new Intent(Splash_Screen_Activity.this,MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            Intent intent = new Intent(Splash_Screen_Activity.this,IntroActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
 }
