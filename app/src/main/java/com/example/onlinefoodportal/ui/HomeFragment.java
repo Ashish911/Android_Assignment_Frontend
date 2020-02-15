@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
         recyclerView=view.findViewById(R.id.categoryRecyclerView);
         categoryImg=view.findViewById(R.id.imgCategory);
         sliderView = view.findViewById(R.id.Slider);
-        Search = view.findViewById(R.id.searchrestaurant);
+        Search = view.findViewById(R.id.searchfood);
         foodrecyclerview = view.findViewById(R.id.FoodsRecycleView);
 
         final SliderAdapter adapter = new SliderAdapter(getContext());
