@@ -5,19 +5,27 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlinefoodportal.DashboardActivity;
 import com.example.onlinefoodportal.FoodDisplayActivity;
 import com.example.onlinefoodportal.R;
+import com.example.onlinefoodportal.api.FavouriteAPI;
 import com.example.onlinefoodportal.model.Favourite;
 import com.example.onlinefoodportal.url.Url;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.ItemViewHolder> {
 
@@ -56,6 +64,26 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Item
                 context.startActivity(intent);
             }
         });
+        holder.imgRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FavouriteAPI favoriteApi=Url.getInstance().create(FavouriteAPI.class);
+                Call<Void> voidCall=favoriteApi.removeFavorite(favouriteList.get(position).getId());
+                voidCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(context, "You have remove a favorite book", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(context, DashboardActivity.class);
+                        context.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(context, "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -67,6 +95,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Item
 
         private ImageView imgFood;
         private TextView tvName, tvPrice, tvId;
+        private ImageButton imgRemove;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +103,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Item
             tvName = itemView.findViewById(R.id.FName);
             tvPrice = itemView.findViewById(R.id.FPrice);
             tvId = itemView.findViewById(R.id.FID);
+            imgRemove = itemView.findViewById(R.id.imgRemove);
         }
     }
 }
