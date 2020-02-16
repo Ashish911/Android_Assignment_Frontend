@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinefoodportal.api.OrderAPI;
+import com.example.onlinefoodportal.bll.OrderBll;
 import com.example.onlinefoodportal.model.Order;
+import com.example.onlinefoodportal.strictmode.StrictModeClass;
 import com.example.onlinefoodportal.url.Url;
 
 import retrofit2.Call;
@@ -64,23 +66,33 @@ public class BuyActivity extends AppCompatActivity {
                 Address = etAddress.getText().toString();
                 PhoneNo = etPhoneNo.getText().toString();
                 Order order = new Order(FoodName, Price, Address, PhoneNo);
-                OrderAPI orderAPI = Url.getInstance().create(OrderAPI.class);
-                Call<Void> voidCall = orderAPI.order(Url.token, order);
-                voidCall.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (!response.isSuccessful()) {
-                            Toast.makeText(BuyActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Toast.makeText(BuyActivity.this, "Bought Successfully", Toast.LENGTH_SHORT).show();
-                    }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(BuyActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                OrderBll orderBll = new OrderBll();
+                StrictModeClass.StrictMode();
+                if (orderBll.orderadd(order)){
+                    Toast.makeText(BuyActivity.this, "Bought Successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(BuyActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+
+//                OrderAPI orderAPI = Url.getInstance().create(OrderAPI.class);
+//                Call<Void> voidCall = orderAPI.order(Url.token, order);
+//                voidCall.enqueue(new Callback<Void>() {
+//                    @Override
+//                    public void onResponse(Call<Void> call, Response<Void> response) {
+//                        if (!response.isSuccessful()) {
+//                            Toast.makeText(BuyActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        Toast.makeText(BuyActivity.this, "Bought Successfully", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Void> call, Throwable t) {
+//                        Toast.makeText(BuyActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
                 finish();
             }
         });

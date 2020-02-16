@@ -16,9 +16,11 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.onlinefoodportal.api.UsersAPI;
+import com.example.onlinefoodportal.bll.SignUpBll;
 import com.example.onlinefoodportal.channel.CreateChannel;
 import com.example.onlinefoodportal.model.Users;
 import com.example.onlinefoodportal.serverresponse.SignUpResponse;
+import com.example.onlinefoodportal.strictmode.StrictModeClass;
 import com.example.onlinefoodportal.url.Url;
 
 import retrofit2.Call;
@@ -101,26 +103,37 @@ public class SignUpActivity extends AppCompatActivity {
 
                 Users users = new Users(FullName, UserName, Email, PhoneNo, Password);
 
-                UsersAPI usersAPI = Url.getInstance().create(UsersAPI.class);
-                Call<SignUpResponse> signUpCall = usersAPI.registerUser(users);
+                SignUpBll signUpBll = new SignUpBll();
+                StrictModeClass.StrictMode();
+                if (signUpBll.Useradd(users)){
+                    Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(SignUpActivity.this, "Error" , Toast.LENGTH_SHORT).show();
+                }
 
-                signUpCall.enqueue(new Callback<SignUpResponse>() {
-                    @Override
-                    public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                        if (!response.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                        Toast.makeText(SignUpActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                UsersAPI usersAPI = Url.getInstance().create(UsersAPI.class);
+//                Call<SignUpResponse> signUpCall = usersAPI.registerUser(users);
+//
+//                signUpCall.enqueue(new Callback<SignUpResponse>() {
+//                    @Override
+//                    public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+//                        if (!response.isSuccessful()) {
+//                            Toast.makeText(SignUpActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
+//                        startActivity(intent);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<SignUpResponse> call, Throwable t) {
+//                        Toast.makeText(SignUpActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
                 DisplayNotification();
             }
         });
