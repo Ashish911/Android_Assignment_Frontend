@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 import com.example.onlinefoodportal.adapter.SearchAdapter;
 import com.example.onlinefoodportal.api.FoodAPI;
 import com.example.onlinefoodportal.model.Food;
-import com.example.onlinefoodportal.ui.HomeFragment;
 import com.example.onlinefoodportal.url.Url;
 
 import java.util.List;

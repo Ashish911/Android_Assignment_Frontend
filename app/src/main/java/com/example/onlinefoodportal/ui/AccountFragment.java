@@ -23,7 +23,6 @@ import com.example.onlinefoodportal.MapsActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.api.UsersAPI;
 import com.example.onlinefoodportal.model.Users;
-import com.example.onlinefoodportal.strictmode.StrictModeClass;
 import com.example.onlinefoodportal.url.Url;
 
 import retrofit2.Call;

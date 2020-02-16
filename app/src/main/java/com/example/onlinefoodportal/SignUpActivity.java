@@ -15,17 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.onlinefoodportal.api.UsersAPI;
 import com.example.onlinefoodportal.bll.SignUpBll;
 import com.example.onlinefoodportal.channel.CreateChannel;
 import com.example.onlinefoodportal.model.Users;
-import com.example.onlinefoodportal.serverresponse.SignUpResponse;
 import com.example.onlinefoodportal.strictmode.StrictModeClass;
-import com.example.onlinefoodportal.url.Url;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 

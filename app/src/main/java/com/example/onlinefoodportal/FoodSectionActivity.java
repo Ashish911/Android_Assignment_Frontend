@@ -8,13 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onlinefoodportal.adapter.FoodAdapter;
 import com.example.onlinefoodportal.api.FoodAPI;
 import com.example.onlinefoodportal.model.Food;
-import com.example.onlinefoodportal.model.Restaurant;
 import com.example.onlinefoodportal.url.Url;
 
 import java.util.List;

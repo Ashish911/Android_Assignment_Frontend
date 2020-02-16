@@ -3,10 +3,8 @@ package com.example.onlinefoodportal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 public class Splash_Screen_Activity extends AppCompatActivity {
 

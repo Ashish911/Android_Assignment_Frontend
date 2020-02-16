@@ -20,8 +20,6 @@ import com.example.onlinefoodportal.adapter.OrderAdapter;
 import com.example.onlinefoodportal.api.OrderAPI;
 import com.example.onlinefoodportal.model.Order;
 import com.example.onlinefoodportal.url.Url;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.util.List;
 

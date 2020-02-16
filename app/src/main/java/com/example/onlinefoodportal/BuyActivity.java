@@ -11,15 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.onlinefoodportal.api.OrderAPI;
 import com.example.onlinefoodportal.bll.OrderBll;
 import com.example.onlinefoodportal.model.Order;
 import com.example.onlinefoodportal.strictmode.StrictModeClass;
-import com.example.onlinefoodportal.url.Url;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BuyActivity extends AppCompatActivity {
 

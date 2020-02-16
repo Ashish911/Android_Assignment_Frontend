@@ -13,7 +13,6 @@ import retrofit2.Response;
 public class SignUpBll {
 
     boolean isSuccess = false;
-    String id;
     public boolean Useradd(Users user) {
         UsersAPI usersAPI = Url.getInstance().create(UsersAPI.class);
         Call<SignUpResponse> usersCall = usersAPI.registerUser(user);

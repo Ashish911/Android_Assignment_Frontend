@@ -17,12 +17,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.onlinefoodportal.MainActivity;
 import com.example.onlinefoodportal.R;
 import com.example.onlinefoodportal.SearchActivity;
-import com.example.onlinefoodportal.SignUpActivity;
 import com.example.onlinefoodportal.adapter.CategoryAdapter;
-import com.example.onlinefoodportal.adapter.FoodAdapter;
 import com.example.onlinefoodportal.adapter.HomeFoodAdapter;
 import com.example.onlinefoodportal.adapter.SliderAdapter;
 import com.example.onlinefoodportal.api.CategoryAPI;
