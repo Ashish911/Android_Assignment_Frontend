@@ -16,7 +16,7 @@ Features of my Project:
 5. Users can check restaurants from different categories
 6. Food is sorted based on their latest addition
 
-Android project Youtube video link:https://youtu.be/DgncZg8QBGQ
+Android project Youtube video link:https://youtu.be/HnG73eck-uk
 
 API link: https://github.com/softwarica-github/t2-backend-api-Ashish911.git
 
