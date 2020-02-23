@@ -19,8 +19,8 @@ public class LogoutInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
 
-    private String Email = "kkk@kkk.com";
-    private String Password = "kkk";
+    private String Email = "mmm@mmm.com";
+    private String Password = "mmm";
 
     @Test
     public void LogoutUITest() {

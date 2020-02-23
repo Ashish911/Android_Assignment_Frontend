@@ -53,9 +53,6 @@ public class FoodSectionActivity extends AppCompatActivity {
         listCall.enqueue(new Callback<List<Food>>() {
             @Override
             public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
-                if (response.code()==200){
-                    Toast.makeText(FoodSectionActivity.this, "Successfull" + response.code(), Toast.LENGTH_SHORT).show();
-                }
                 FoodAdapter foodAdapter = new FoodAdapter(response.body(), FoodSectionActivity.this);
                 recyclerView.setAdapter(foodAdapter);
                 recyclerView.setHasFixedSize(true);

@@ -58,9 +58,6 @@ public class CategoryActivity extends AppCompatActivity {
         listCall.enqueue(new Callback<List<Restaurant>>() {
             @Override
             public void onResponse(Call<List<Restaurant>> call, Response<List<Restaurant>> response) {
-                if (response.code()==200){
-                    Toast.makeText(CategoryActivity.this, "Successfull" + response.code(), Toast.LENGTH_SHORT).show();
-                }
                 RestaurantAdapter restaurantAdapter = new RestaurantAdapter(response.body(), CategoryActivity.this);
                 recyclerView.setAdapter(restaurantAdapter);
                 recyclerView.setHasFixedSize(true);

@@ -72,7 +72,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Item
                 voidCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(context, "You have remove a favorite book", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "You have remove a favorite food", Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(context, DashboardActivity.class);
                         context.startActivity(intent);
                     }

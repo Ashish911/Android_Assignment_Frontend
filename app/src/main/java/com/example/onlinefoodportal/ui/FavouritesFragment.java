@@ -67,10 +67,6 @@ public class FavouritesFragment extends Fragment {
         listCall.enqueue(new Callback<List<Favourite>>() {
             @Override
             public void onResponse(Call<List<Favourite>> call, Response<List<Favourite>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(getContext(), "Toast " + response.code(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 FavouriteAdapter favouriteAdapter = new FavouriteAdapter(getActivity(), response.body());
                 recyclerView.setAdapter(favouriteAdapter);
                 recyclerView.setHasFixedSize(true);

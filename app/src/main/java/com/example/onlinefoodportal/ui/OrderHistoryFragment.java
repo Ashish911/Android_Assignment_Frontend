@@ -62,9 +62,6 @@ public class OrderHistoryFragment extends Fragment {
         listCall.enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
-                if(response.code()==200){
-                    Toast.makeText(getActivity(), "Toast" + response.code(), Toast.LENGTH_SHORT).show();
-                }
                 OrderAdapter orderAdapter = new OrderAdapter(getActivity(),response.body());
                 recyclerView.setAdapter(orderAdapter);
                 recyclerView.setHasFixedSize(true);
